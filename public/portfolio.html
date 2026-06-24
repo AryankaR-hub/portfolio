@@ -123,6 +123,27 @@ section{padding:100px 80px;position:relative;background:rgba(5,12,28,.76)!import
 .sk-tags{display:flex;flex-wrap:wrap;gap:6px;}
 .sk-tag{font-family:var(--mono);font-size:10px;color:var(--muted);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:4px 10px;transition:all .2s;letter-spacing:.05em;}
 .sk-cat:hover .sk-tag{color:var(--np2);border-color:var(--npd);}
+/* SKILL RATINGS */
+.sk-rating{margin-top:18px;}
+.sk-rating-row{margin-bottom:10px;}
+.sk-rating-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.sk-rating-name{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.12em;}
+.sk-rating-pct{font-family:var(--mono);font-size:9px;color:var(--np);letter-spacing:.06em;}
+.sk-bar-track{height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
+.sk-bar-fill{height:100%;border-radius:2px;background:linear-gradient(to right,var(--np),var(--nr));width:0;transition:width 1.1s cubic-bezier(.16,1,.3,1);}
+.sk-bar-fill.anim{width:var(--w);}
+/* EDU/EXP SPLIT */
+.edu-section{margin-top:64px;}
+.edu-tag{font-family:var(--mono);font-size:9px;letter-spacing:.3em;color:var(--teal2);text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+
+/* PROJECT FILTER TABS */
+.proj-tabs{display:flex;gap:10px;margin-bottom:38px;flex-wrap:wrap;}
+.proj-tab{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--bd);padding:9px 22px;border-radius:50px;cursor:pointer;background:transparent;transition:all .22s;}
+.proj-tab:hover{color:var(--cream);border-color:rgba(255,45,155,.35);}
+.proj-tab.active{color:var(--np);border-color:var(--np);background:var(--npd);box-shadow:0 0 14px rgba(255,45,155,.15);}
+.proj-card{transition:transform .35s cubic-bezier(.34,1.56,.64,1),border-color .3s,box-shadow .3s,opacity .3s;}
+.proj-card.hidden{display:none !important;}
+.proj-wip{grid-column:span 2;}
 
 /* PROJECTS */
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
@@ -130,6 +151,9 @@ section{padding:100px 80px;position:relative;background:rgba(5,12,28,.76)!import
 .proj-card:hover{transform:translateY(-6px);border-color:rgba(255,45,155,.3);box-shadow:0 24px 60px rgba(0,0,0,.4),0 0 30px rgba(255,45,155,.1);}
 .proj-card.feat{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;}
 .proj-vis{aspect-ratio:16/9;background:rgba(5,12,28,.85);display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden;}
+.proj-vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.82;transition:opacity .3s,transform .4s;}
+.proj-card:hover .proj-vis img{opacity:1;transform:scale(1.03);}
+.proj-vis .proj-vis-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,12,28,.18),rgba(5,12,28,.55));z-index:1;}
 .proj-card.feat .proj-vis{aspect-ratio:auto;min-height:280px;}
 .proj-vis::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%,rgba(255,45,155,.07),transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(57,255,20,.05),transparent 60%);}
 .proj-num{position:absolute;top:12px;left:14px;font-family:var(--mono);font-size:9px;color:var(--np);letter-spacing:.2em;opacity:.8;text-shadow:0 0 8px var(--np);}
@@ -261,6 +285,7 @@ footer{padding:24px 80px;display:flex;justify-content:space-between;align-items:
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
     <li><a href="#funfacts">Fun Facts</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -320,18 +345,34 @@ footer{padding:24px 80px;display:flex;justify-content:space-between;align-items:
     <div class="sk-cat reveal" style="transition-delay:.04s">
       <div class="sk-icon">&#9883;&#65039;</div><div class="sk-name">Frontend</div><div class="sk-sub">Interface layer</div>
       <div class="sk-tags"><span class="sk-tag">React</span><span class="sk-tag">Next.js</span><span class="sk-tag">TypeScript</span><span class="sk-tag">Streamlit</span></div>
+      <div class="sk-rating">
+        <div class="sk-rating-row"><div class="sk-rating-label"><span class="sk-rating-name">React / Next.js</span><span class="sk-rating-pct">85%</span></div><div class="sk-bar-track"><div class="sk-bar-fill" style="--w:85%"></div></div></div>
+        <div class="sk-rating-row"><div class="sk-rating-label"><span class="sk-rating-name">TypeScript</span><span class="sk-rating-pct">80%</span></div><div class="sk-bar-track"><div class="sk-bar-fill" style="--w:75%"></div></div></div>
+      </div>
     </div>
     <div class="sk-cat reveal" style="transition-delay:.08s">
       <div class="sk-icon">&#128295;</div><div class="sk-name">Backend</div><div class="sk-sub">Server layer</div>
       <div class="sk-tags"><span class="sk-tag">Node.js</span><span class="sk-tag">Express.js</span><span class="sk-tag">Django</span><span class="sk-tag">REST APIs</span><span class="sk-tag">MongoDB</span><span class="sk-tag">MySQL</span><span class="sk-tag">Supabase</span></div>
+      <div class="sk-rating">
+        <div class="sk-rating-row"><div class="sk-rating-label"><span class="sk-rating-name">Node.js / Express</span><span class="sk-rating-pct">82%</span></div><div class="sk-bar-track"><div class="sk-bar-fill" style="--w:88%"></div></div></div>
+        <div class="sk-rating-row"><div class="sk-rating-label"><span class="sk-rating-name">Django / FastAPI</span><span class="sk-rating-pct">88%</span></div><div class="sk-bar-track"><div class="sk-bar-fill" style="--w:82%"></div></div></div>
+      </div>
     </div>
     <div class="sk-cat reveal" style="transition-delay:.12s">
       <div class="sk-icon">&#129302;</div><div class="sk-name">ML &middot; Deep Learning</div><div class="sk-sub">AI / ML layer</div>
       <div class="sk-tags"><span class="sk-tag">Python</span><span class="sk-tag">TensorFlow</span><span class="sk-tag">PyTorch</span><span class="sk-tag">scikit-learn</span><span class="sk-tag">Pandas</span><span class="sk-tag">NumPy</span></div>
+      <div class="sk-rating">
+        <div class="sk-rating-row"><div class="sk-rating-label"><span class="sk-rating-name">Python / scikit-learn</span><span class="sk-rating-pct">92%</span></div><div class="sk-bar-track"><div class="sk-bar-fill" style="--w:92%"></div></div></div>
+        <div class="sk-rating-row"><div class="sk-rating-label"><span class="sk-rating-name">PyTorch / TensorFlow</span><span class="sk-rating-pct">87%</span></div><div class="sk-bar-track"><div class="sk-bar-fill" style="--w:80%"></div></div></div>
+      </div>
     </div>
     <div class="sk-cat reveal" style="transition-delay:.16s">
       <div class="sk-icon">&#129504;</div><div class="sk-name">NLP &middot; LLMs</div><div class="sk-sub">Language AI layer</div>
       <div class="sk-tags"><span class="sk-tag">NLP</span><span class="sk-tag">LLMs</span><span class="sk-tag">LangChain</span><span class="sk-tag">HuggingFace</span><span class="sk-tag">Transformers</span><span class="sk-tag">RAG</span></div>
+      <div class="sk-rating">
+        <div class="sk-rating-row"><div class="sk-rating-label"><span class="sk-rating-name">LangChain / RAG</span><span class="sk-rating-pct">75%</span></div><div class="sk-bar-track"><div class="sk-bar-fill" style="--w:78%"></div></div></div>
+        <div class="sk-rating-row"><div class="sk-rating-label"><span class="sk-rating-name">HuggingFace / Transformers</span><span class="sk-rating-pct">78%</span></div><div class="sk-bar-track"><div class="sk-bar-fill" style="--w:72%"></div></div></div>
+      </div>
     </div>
     <div class="sk-cat reveal" style="transition-delay:.20s">
       <div class="sk-icon">&#128202;</div><div class="sk-name">Data &amp; Analytics</div><div class="sk-sub">Insight layer</div>
@@ -350,9 +391,14 @@ footer{padding:24px 80px;display:flex;justify-content:space-between;align-items:
   <div class="s-tag reveal">Selected Work</div>
   <h2 class="s-title reveal">Projects I&apos;ve <em>Shipped</em></h2>
   <p class="s-sub reveal">Real problems, live deployments &mdash; full stack apps and intelligent ML systems.</p>
+  <div class="proj-tabs reveal">
+    <button class="proj-tab active" data-filter="all">All Projects</button>
+    <button class="proj-tab" data-filter="fullstack">Full Stack</button>
+    <button class="proj-tab" data-filter="ml">ML · AI</button>
+  </div>
   <div class="proj-grid">
-    <div class="proj-card feat reveal">
-      <div class="proj-vis"><span class="proj-num">01 &middot; Featured</span>&#9971;</div>
+    <div class="proj-card feat reveal" data-category="fullstack">
+      <div class="proj-vis"><span class="proj-num">01 &middot; Featured</span><img src="/assets/proj-sapphire.jpeg" alt="The Sapphire Club" onerror="this.style.display='none'"/><div class="proj-vis-overlay"></div>&#9971;</div>
       <div class="proj-body">
         <h3 class="proj-name">The Sapphire Club</h3>
         <p class="proj-desc">A premium golf charity platform where users log in, take membership, choose a cause (child education, food relief, or forest greenery), and submit their last 5 golf scores. Admin runs a monthly lucky draw &mdash; if your scores match, you win.</p>
@@ -360,8 +406,8 @@ footer{padding:24px 80px;display:flex;justify-content:space-between;align-items:
         <a href="https://golf-charity-khaki.vercel.app/" target="_blank" class="proj-link">View Live Project <span class="pl-arr"></span></a>
       </div>
     </div>
-    <div class="proj-card reveal" style="transition-delay:.05s">
-      <div class="proj-vis"><span class="proj-num">02</span>&#128200;</div>
+    <div class="proj-card reveal" style="transition-delay:.05s" data-category="ml">
+      <div class="proj-vis"><span class="proj-num">02</span><img src="/assets/ml_tradebot.jpeg" alt="ML Trade Bot" onerror="this.style.display='none'"/><div class="proj-vis-overlay"></div>&#128200;</div>
       <div class="proj-body">
         <h3 class="proj-name">ML Trade Bot</h3>
         <p class="proj-desc">An ML-powered trading signal platform. Analyses market patterns, generates buy/sell signals using trained models, and visualises predictions through an interactive Streamlit dashboard.</p>
@@ -369,8 +415,8 @@ footer{padding:24px 80px;display:flex;justify-content:space-between;align-items:
         <a href="https://mltradebot-7avyejcdcx4cvicasmqgbc.streamlit.app/" target="_blank" class="proj-link">View Live <span class="pl-arr"></span></a>
       </div>
     </div>
-    <div class="proj-card reveal" style="transition-delay:.10s">
-      <div class="proj-vis"><span class="proj-num">03</span>&#127973;</div>
+    <div class="proj-card reveal" style="transition-delay:.10s" data-category="ml">
+      <div class="proj-vis"><span class="proj-num">03</span><img src="/assets/mini_risk_predictor.jpeg" alt="Health Risk Predictor" onerror="this.style.display='none'"/><div class="proj-vis-overlay"></div>&#127973;</div>
       <div class="proj-body">
         <h3 class="proj-name">Health Risk Predictor</h3>
         <p class="proj-desc">A Streamlit ML app that takes patient vitals and lifestyle inputs to predict health risk levels. Powered by a trained classification model with clear visual output.</p>
@@ -378,17 +424,17 @@ footer{padding:24px 80px;display:flex;justify-content:space-between;align-items:
         <a href="https://minihealthriskpredictor-mkw2yomgbfu8vmxddqs94t.streamlit.app/" target="_blank" class="proj-link">View Live <span class="pl-arr"></span></a>
       </div>
     </div>
-    <div class="proj-card reveal" style="transition-delay:.15s">
-      <div class="proj-vis"><span class="proj-num">04</span>&#128240;</div>
+    <div class="proj-card reveal" style="transition-delay:.15s" data-category="fullstack">
+      <div class="proj-vis"><span class="proj-num">04</span><img src="/assets/django_article.jpeg" alt="Django Article Platform" onerror="this.style.display='none'"/><div class="proj-vis-overlay"></div>&#128240;</div>
       <div class="proj-body">
-        <h3 class="proj-name">Django News Platform</h3>
+        <h3 class="proj-name">Django Article Platform</h3>
         <p class="proj-desc">A full-stack news, food, fun facts and gossip article platform built with Django. Features article CRUD, category browsing, user authentication, and a clean admin panel.</p>
         <div class="proj-tech"><span class="pt">Django</span><span class="pt">Python</span><span class="pt">MySQL</span><span class="pt">HTML/CSS</span></div>
         <a href="https://django-news-artical-1.onrender.com" target="_blank" class="proj-link">View Live <span class="pl-arr"></span></a>
       </div>
     </div>
-    <div class="proj-card reveal" style="transition-delay:.20s">
-      <div class="proj-vis"><span class="proj-num">05</span>&#129345;</div>
+    <div class="proj-card reveal" style="transition-delay:.20s" data-category="fullstack">
+      <div class="proj-vis"><span class="proj-num">05</span><img src="/assets/drums.jpeg" alt="Interactive Drum Kit" onerror="this.style.display='none'"/><div class="proj-vis-overlay"></div>&#129345;</div>
       <div class="proj-body">
         <h3 class="proj-name">Interactive Drum Kit</h3>
         <p class="proj-desc">A browser-based drum machine triggered by keyboard keys. Real drum sounds, animated key press feedback, and a satisfyingly tactile experience &mdash; pure vanilla JS.</p>
@@ -396,8 +442,8 @@ footer{padding:24px 80px;display:flex;justify-content:space-between;align-items:
         <a href="https://drum-kit-1dx3.onrender.com/" target="_blank" class="proj-link">View Live <span class="pl-arr"></span></a>
       </div>
     </div>
-    <div class="proj-card reveal" style="transition-delay:.25s">
-      <div class="proj-vis"><span class="proj-num">06</span>&#127807;</div>
+    <div class="proj-card reveal" style="transition-delay:.25s" data-category="fullstack">
+      <div class="proj-vis"><span class="proj-num">06</span><img src="/assets/plant_shop.jpeg" alt="Plant Shop" onerror="this.style.display='none'"/><div class="proj-vis-overlay"></div>&#127807;</div>
       <div class="proj-body">
         <h3 class="proj-name">Plant Shop</h3>
         <p class="proj-desc">A full e-commerce plant store with product listings, shopping cart, and checkout flow. Clean UI focused on browsing experience, deployed on Render.</p>
@@ -406,8 +452,8 @@ footer{padding:24px 80px;display:flex;justify-content:space-between;align-items:
       </div>
     </div>
     <!-- WIP -->
-    <div class="proj-card reveal" style="transition-delay:.30s;grid-column:span 2;border-color:rgba(255,45,155,.2);">
-      <div style="display:grid;grid-template-columns:1fr 1fr;">
+    <div class="proj-card proj-wip reveal" style="transition-delay:.30s;border-color:rgba(255,45,155,.2);" data-category="ml">
+      <div id="wip-inner" style="display:grid;grid-template-columns:1fr 1fr;">
         <div class="proj-vis" style="background:linear-gradient(135deg,rgba(255,45,155,.07),rgba(5,12,28,.9));min-height:200px;">
           <span class="proj-num">07</span><span style="font-size:42px">&#128302;</span>
           <span style="position:absolute;bottom:12px;right:14px;font-family:var(--mono);font-size:8px;color:var(--np);letter-spacing:.2em;text-shadow:0 0 8px var(--np);animation:blinkDot 1.5s infinite;">&#9711; IN PROGRESS</span>
@@ -433,8 +479,8 @@ footer{padding:24px 80px;display:flex;justify-content:space-between;align-items:
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="s-tag reveal">Journey</div>
-  <h2 class="s-title reveal">Experience &amp; <span class="r">Education</span></h2>
-  <p class="s-sub reveal">Where I&apos;ve worked, what I&apos;ve learned, how I&apos;ve grown.</p>
+  <h2 class="s-title reveal">Work &amp; <em>Experience</em></h2>
+  <p class="s-sub reveal">Where I&apos;ve built, shipped, and researched.</p>
   <div class="exp-list">
     <div class="exp-item reveal">
       <div><div class="ex-year">Jan &ndash; Apr 2026</div><div class="ex-type">Research</div></div>
@@ -463,13 +509,23 @@ footer{padding:24px 80px;display:flex;justify-content:space-between;align-items:
         <div class="ex-tags"><span class="ex-tag">Next.js</span><span class="ex-tag">Node.js</span><span class="ex-tag">Django</span><span class="ex-tag">React</span><span class="ex-tag">Supabase</span><span class="ex-tag">MongoDB</span></div>
       </div>
     </div>
-    <div class="exp-item reveal" style="transition-delay:.21s">
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="s-tag reveal">Academic Path</div>
+  <h2 class="s-title reveal">My <em>Education</em></h2>
+  <p class="s-sub reveal">The foundation behind everything I build.</p>
+  <div class="exp-list">
+    <div class="exp-item reveal" style="transition-delay:.07s">
       <div><div class="ex-year">2023 &ndash; 2027</div><div class="ex-type">Degree</div></div>
       <div>
         <div class="ex-role">B.Tech &middot; Computer Science &amp; Engineering</div>
         <div class="ex-place">IIIT Vadodara</div>
-        <div class="ex-desc">Core CS &mdash; data structures, algorithms, databases, ML, deep learning, NLP, networking and software engineering. Active in ML research under faculty guidance.</div>
-        <div class="ex-tags"><span class="ex-tag">CSE</span><span class="ex-tag">IIIT Vadodara</span><span class="ex-tag">ML Research</span></div>
+        <div class="ex-desc">Core CS &mdash; data structures, algorithms, databases, ML, deep learning, NLP, networking and software engineering. Active in ML research under faculty guidance. Expected graduation 2027.</div>
+        <div class="ex-tags"><span class="ex-tag">CSE</span><span class="ex-tag">IIIT Vadodara</span><span class="ex-tag">ML Research</span><span class="ex-tag">2023–2027</span></div>
       </div>
     </div>
   </div>
@@ -657,6 +713,10 @@ window.addEventListener("scroll",function(){nav.classList.toggle("scrolled",wind
 /* ====================================================== REVEAL */
 var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("vis");io.unobserve(e.target);}});},{threshold:.08,rootMargin:"0px 0px -20px 0px"});
 document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
+// Fallback: if opened as local file or observer doesn't fire, reveal all after short delay
+if(window.location.protocol==="file:"||!("IntersectionObserver" in window)){
+  setTimeout(function(){document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("vis");});},200);
+}
 
 /* ====================================================== HASH LINKS */
 document.querySelectorAll("a[href^=\"#\"]").forEach(function(a){a.addEventListener("click",function(e){var t=document.querySelector(a.getAttribute("href"));if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"});}});});
@@ -691,6 +751,72 @@ document.querySelectorAll(".sk-cat").forEach(function(card){
   card.addEventListener("mousemove",function(e){var r=card.getBoundingClientRect(),x=((e.clientX-r.left)/r.width)*100,y=((e.clientY-r.top)/r.height)*100;card.style.background="radial-gradient(circle at "+x+"% "+y+"%,rgba(255,45,155,.08) 0%,rgba(10,22,48,.90) 55%)";});
   card.addEventListener("mouseleave",function(){card.style.background="";});
 });
+
+/* ====================================================== PROJECT FILTER TABS */
+(function(){
+  var featCard = document.querySelector(".proj-card.feat");
+  var wipCard  = document.querySelector(".proj-card.proj-wip");
+  var wipInner = document.getElementById("wip-inner");
+
+  function applyFilter(filter){
+    // Step 1: show/hide each card based on category
+    document.querySelectorAll(".proj-card").forEach(function(card){
+      var match = filter==="all" || card.getAttribute("data-category")===filter;
+      card.classList.toggle("hidden", !match);
+    });
+
+    // Step 2: fix layout of feat card ONLY if it's visible
+    var featVisible = !featCard.classList.contains("hidden");
+    if(featVisible){
+      if(filter==="all"){
+        featCard.style.gridColumn = "span 2";
+        featCard.style.display = "grid";
+        featCard.style.flexDirection = "";
+        featCard.style.gridTemplateColumns = "1fr 1fr";
+      } else {
+        featCard.style.gridColumn = "span 1";
+        featCard.style.display = "flex";
+        featCard.style.flexDirection = "column";
+        featCard.style.gridTemplateColumns = "unset";
+      }
+    }
+
+    // Step 3: fix layout of wip card ONLY if it's visible
+    var wipVisible = !wipCard.classList.contains("hidden");
+    if(wipVisible){
+      if(filter==="all"){
+        wipCard.style.gridColumn = "span 2";
+        wipInner.style.display = "grid";
+        wipInner.style.flexDirection = "";
+        wipInner.style.gridTemplateColumns = "1fr 1fr";
+      } else {
+        wipCard.style.gridColumn = "span 1";
+        wipInner.style.display = "flex";
+        wipInner.style.flexDirection = "column";
+        wipInner.style.gridTemplateColumns = "1fr";
+      }
+    }
+  }
+
+  document.querySelectorAll(".proj-tab").forEach(function(tab){
+    tab.addEventListener("click", function(){
+      document.querySelectorAll(".proj-tab").forEach(function(t){t.classList.remove("active");});
+      tab.classList.add("active");
+      applyFilter(tab.getAttribute("data-filter"));
+    });
+  });
+})();
+
+/* ====================================================== SKILL BAR ANIMATION */
+(function(){
+  var bars=document.querySelectorAll(".sk-bar-fill");
+  var barObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add("anim");barObs.unobserve(e.target);}
+    });
+  },{threshold:.3});
+  bars.forEach(function(b){barObs.observe(b);});
+})();
 
 /* ====================================================== VOICE BAR — uncomment below when audio file is ready
 var audio=document.getElementById("intro-audio"),voiceBar=document.getElementById("voice-bar"),vbFill=document.getElementById("vb-fill"),vbToggle=document.getElementById("vb-toggle"),vbReplay=document.getElementById("vb-replay"),vbText=voiceBar.querySelector(".vb-text"),hasPlayed=false;
